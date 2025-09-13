@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт тхененсона</title>
+    <style>
+        /* San Francisco font stack */
+        @font-face {
+            font-family: 'San Francisco';
+            font-weight: 400;
+            src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2') format('woff2'),
+                 url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff') format('woff');
+        }
+        
+        body {
+            font-family: -apple-system, 'San Francisco', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #ffffff;
+            background: url('https://images.wallpaperscraft.ru/image/single/gory_ozero_vershiny_119133_1920x1080.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+        
+        main {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            font-size: 2.2rem;
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            margin: 25px 0;
+        }
+        
+        .btn {
+            color: #ffffff;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 14px 0;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            letter-spacing: 0.3px;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        #question-content {
+            display: none;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            animation: fadeIn 0.5s;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            font-weight: 400;
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tg-link {
+            color: #ffffff;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+            padding-bottom: 1px;
+        }
+        
+        .tg-link:hover {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            border-bottom: 1px dashed transparent;
+        }
+        
+        .terminal-text {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: blink 1s step-end infinite;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.3px;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Упрощённая нижняя панель */
+        .bottom-panel {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+        }
+        
+        .signature {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Привет</h1>
+        
+        <p class="terminal-text">Здесь ничего нет (пока что)_</p>
+        
+        <div class="btn-container">
+            <div class="btn" onclick="openPineappleImage()">Ананас</div>
+            <div class="btn" onclick="openBlockBlast()">Блок бласт от нейросети</div>
+            <div class="btn" id="question">Хочешь спросить?</div>
+        </div>
+        
+        <div id="question-content">
+            <p>Мой ТГ: <span class="tg-link" onclick="openTelegram()">@thnnsn</span></p>
+            <p>Напиши мне, если что-то нужно</p>
+        </div>
+
+        <!-- Упрощённая нижняя панель -->
+        <div class="bottom-panel">
+            <div class="signature">сделано ненсоном</div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('question').addEventListener('click', function() {
+            const content = document.getElementById('question-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            
+            // Добавляем анимацию каждый раз при открытии
+            if (content.style.display === 'block') {
+                content.style.animation = 'none';
+                void content.offsetWidth; // Trigger reflow
+                content.style.animation = 'fadeIn 0.5s';
+            }
+        });
+
+        function openPineappleImage() {
+            window.open('https://nnsnsite.byethost33.com/ananas.jpg', '_blank');
+        }
+
+        function openTelegram() {
+            window.open('https://t.me/thnnsn', '_blank');
+        }
+
+        function openBlockBlast() {
+            window.open('http://nnsnsite.byethost33.com/blockblast.html', '_blank');
+        }
+
+        // Terminal-like text effect
+        const terminalText = document.querySelector('.terminal-text');
+        const originalText = terminalText.textContent;
+        terminalText.textContent = '';
+        
+        let i = 0;
+        const typingEffect = setInterval(() => {
+            if (i < originalText.length) {
+                terminalText.textContent += originalText.charAt(i);
+                i++;
+            } else {
+                clearInterval(typingEffect);
+            }
+        }, 100);
+    </script>
+</body>
+</html>
