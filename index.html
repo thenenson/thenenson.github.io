@@ -148,7 +148,6 @@
             50% { opacity: 0.5; }
         }
         
-        /* Упрощённая нижняя панель */
         .bottom-panel {
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             margin-top: 30px;
@@ -181,7 +180,6 @@
             <p>Напиши мне, если что-то нужно</p>
         </div>
 
-        <!-- Упрощённая нижняя панель -->
         <div class="bottom-panel">
             <div class="signature">сделано ненсоном</div>
         </div>
@@ -192,10 +190,9 @@
             const content = document.getElementById('question-content');
             content.style.display = content.style.display === 'block' ? 'none' : 'block';
             
-            // Добавляем анимацию каждый раз при открытии
             if (content.style.display === 'block') {
                 content.style.animation = 'none';
-                void content.offsetWidth; // Trigger reflow
+                void content.offsetWidth; 
                 content.style.animation = 'fadeIn 0.5s';
             }
         });
@@ -212,7 +209,7 @@
             window.open('http://nnsnsite.byethost33.com/blockblast.html', '_blank');
         }
 
-        // Terminal-like text effect
+        
         const terminalText = document.querySelector('.terminal-text');
         const originalText = terminalText.textContent;
         terminalText.textContent = '';
@@ -228,4 +225,5 @@
         }, 100);
     </script>
 </body>
+
 </html>
